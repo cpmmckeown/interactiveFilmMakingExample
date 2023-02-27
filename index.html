@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.grid-container-two-column {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.grid-container-one-column {
+  display: grid;
+  grid-template-columns: auto;
+  padding: 10px;
+}
+
+.grid-item {
+  
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+
+}
+
+.myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+ 
+}
+
+.myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+</style>
+</head>
+
+
+
+<body>
+
+    
+   
+
+<video autoplay muted loop id="myVideo">
+  <source src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clip%201.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+<div class="grid-container-one-column">
+  <div class="grid-item">
+    <audio controls autoplay><source src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/time-for-something-new-136901.mp3" type="audio/mpeg"></audio>
+  </div>
+<div class="content" id="content">
+  <div class="grid-container-two-column">
+    <div class="grid-item"><button class="myBtn" onclick="takeDrink()">Take a Drink</button></div>
+    <div class="grid-item"><button class="myBtn" onclick="dontDrink()">Don't take Drink</button></div>
+  </div>    
+</div>
+
+<script>
+var video = document.getElementById("myVideo");
+var content = document.getElementById("content");
+
+function takeDrink() {
+  video.src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clip%202.mp4";
+  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/everynowandthen.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-one-column'><div class='grid-item'><button class='myBtn' onclick='goBack()'>Go Back</button></div></div>";
+}
+
+function dontDrink () 
+{
+  video.src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clips.mp4";
+  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/giveyourselfcredit.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-one-column'><div class='grid-item'><button class='myBtn' onclick='goBack()'>Go Back</button></div></div>"
+}
+
+function goBack() 
+{
+  video.src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clip%201.mp4";
+  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/everydecision.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-two-column'><div class='grid-item'><button class='myBtn' onclick='takeDrink()'>Take a Drink</button></div><div class='grid-item'><button class='myBtn' onclick='dontDrink()'>Don't take Drink</button></div>";
+}
+
+</script>
+
+</body>
+</html>
