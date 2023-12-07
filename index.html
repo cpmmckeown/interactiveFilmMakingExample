@@ -27,6 +27,7 @@
 }
 
 body {
+  background-color: #000;
   margin: 0;
   font-family: Arial;
   font-size: 17px;
@@ -71,41 +72,56 @@ body {
 
 
 <body>
-  
-<video autoplay muted loop id="myVideo">
-  <source src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clip%201.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
-<div class="grid-container-one-column">
-  <div class="grid-item">
-    <audio controls autoplay><source src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/time-for-something-new-136901.mp3" type="audio/mpeg"></audio>
-  </div>
+  <video autoplay muted loop id="myVideo">
+    <source src="" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <audio id='bMusic' autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/raw/main/time-for-something-new-136901.mp3' type='audio/mpeg'></audio> 
+
 <div class="content" id="content">
-  <div class="grid-container-two-column">
-    <div class="grid-item"><button class="myBtn" onclick="takeDrink()">Take a Drink</button></div>
-    <div class="grid-item"><button class="myBtn" onclick="dontDrink()">Don't take Drink</button></div>
+  <div class="grid-container-one-column">
+      <div class="grid-item">
+        <button class="myBtn" onclick="start()">Click to Start</button>
+      </div>
   </div>    
 </div>
+
 
 <script>
 var video = document.getElementById("myVideo");
 var content = document.getElementById("content");
+var bMusic = document.getElementById("bMusic");
+var curTime;
 
-function takeDrink() {
+function getCurTime() { 
+  curTime = bMusic.currentTime;
+} 
+
+function setCurTime() { 
+  bMusic.currentTime = curTime;
+} 
+
+function start() 
+{
+  video.src="https://github.com/cpmmckeown/introductiontodigitalstorytelling/raw/main/Alcoad%20clip%201.mp4";
+  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/everydecision.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-two-column'><div class='grid-item'><button class='myBtn' onclick='functionA()'>Take a Drink</button></div><div class='grid-item'><button class='myBtn' onclick='functionB()'>Don't take Drink</button></div>";
+  getCurTime();
+  setCurTime();
+}
+
+function functionA() {
+  getCurTime();
   video.src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clip%202.mp4";
-  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/everynowandthen.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-one-column'><div class='grid-item'><button class='myBtn' onclick='goBack()'>Go Back</button></div></div>";
+  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/everynowandthen.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-one-column'><div class='grid-item'><button class='myBtn' onclick='start()'>Go Back</button></div></div>";
+  setCurTime();
 }
 
-function dontDrink () 
+function functionB() 
 {
+  getCurTime();
   video.src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clips.mp4";
-  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/giveyourselfcredit.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-one-column'><div class='grid-item'><button class='myBtn' onclick='goBack()'>Go Back</button></div></div>"
-}
-
-function goBack() 
-{
-  video.src="https://raw.githubusercontent.com/cpmmckeown/introductiontodigitalstorytelling/main/Alcoad%20clip%201.mp4";
-  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/everydecision.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-two-column'><div class='grid-item'><button class='myBtn' onclick='takeDrink()'>Take a Drink</button></div><div class='grid-item'><button class='myBtn' onclick='dontDrink()'>Don't take Drink</button></div>";
+  content.innerHTML = "<audio autoplay><source src='https://github.com/cpmmckeown/introductiontodigitalstorytelling/blob/main/giveyourselfcredit.mp3?raw=true' type='audio/mpeg'></audio><div class='grid-container-one-column'><div class='grid-item'><button class='myBtn' onclick='start()'>Go Back</button></div></div>"
+  setCurTime();
 }
 
 </script>
